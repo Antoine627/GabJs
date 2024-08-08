@@ -26,8 +26,8 @@ body {
     position: relative; /* Pour permettre le placement des éléments absolument positionnés */
     height: 100vh; /* Hauteur de l'écran */
 }
-/*
-#sect2::before {
+
+#body::before {
     content: "";
     position: fixed;
     top: 0;
@@ -41,13 +41,13 @@ body {
 }
 
 @keyframes backgroundAnimation {
-    0% { background-image: url('Atm_kiosk_UI.webp'); }
-    25% { background-image: url('Gab_express.webp'); }
-    50% { background-image: url('bnk.jpeg'); }
-    75% { background-image: url('Atm_kiosk_UI.webp'); }
-    100% { background-image: url('Gab_express.webp'); }
+    0% { background-image: url('image/1webp'); }
+    25% { background-image: url('image/2.jpg'); }
+    50% { background-image: url('image/3.jpg'); }
+    75% { background-image: url('image/gab.png'); }
+    100% { background-image: url('image/1webp'); }
 }
-*/
+
 .header {
     text-align: center;
     margin: 0;
@@ -60,7 +60,10 @@ body {
 }
 
 .marquee {
+    position: relative;
+    bottom: 150px;
     color: #fff;
+    font-weight: bold;
     padding: 10px;
     width: 100%;
     text-align: center;
@@ -72,8 +75,9 @@ body {
 .marquee p {
     display: inline-block;
     animation: marquee 10s linear infinite;
-    font-size: 20px;
+    font-size: 50px;
     margin: 0;
+    animation-duration: 30s;
 }
 
 
