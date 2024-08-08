@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"> <!-- Définir l'encodage des caractères en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Assurer la compatibilité avec les appareils mobiles -->
+    <title>Gab Simple</title> <!-- Titre de la page affiché dans l'onglet du navigateur -->
+    <link rel="stylesheet" href="gab.css"> <!-- Lien vers le fichier CSS pour le style de la page -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body id="body">
+    <!-- En-tête de la page avec le nom du GAB -->
+   
+
+    <!-- Bande défilante avec un message de bienvenue -->
+    
+
+    <!-- Conteneur principal pour la connexion -->
+    <div class="container">
+        <h2>Connexion</h2>
+
+        <!-- Formulaire de connexion -->
+        <form id="loginForm">
+            <!-- Champ pour l'ID Utilisateur -->
+            <label for="userId">ID Utilisateur:</label>
+            <input type="number" id="userId" name="userId" placeholder="Entrer votre identifiant" required>
+            
+            <!-- Champ pour le Mot de Passe -->
+            <label for="password">Mot de Passe:</label>
+            <input type="password" id="password" name="password" placeholder="Entrer votre mot de passe" required>
+            
+            <!-- Bouton pour soumettre le formulaire -->
+            <button type="submit">Se Connecter</button>
+        </form>
+
+        <!-- Zone pour afficher les messages d'erreur ou de confirmation -->
+        <div id="message"></div>
+    </div>
+
+    <!-- Inclusion du fichier JavaScript pour gérer la logique de la page -->
+    <script src="gab.js"></script>
+</body>
+</html>

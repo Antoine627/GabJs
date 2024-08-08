@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"> <!-- Définir l'encodage des caractères en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Assurer la compatibilité avec les appareils mobiles -->
+    <title>Consultation et Retrait</title> <!-- Titre de la page affiché dans l'onglet du navigateur -->
+    <link rel="stylesheet" href="gab.css"> <!-- Lien vers le fichier CSS pour le style de la page -->
+</head>
+
+<style>
+    #submit-withdrawal
+    {
+        width: 150px;
+    }
+</style>
+
+<body id="sect2"> 
+
+    <!-- Conteneur principal pour les options de consultation et de retrait -->
+    <div class="container2">
+        <h2>Transactions disponibles</h2>
+
+        <!-- Conteneur pour les boutons de consultation et de retrait -->
+        <div class="button-container">
+            <!-- Bouton pour consulter le solde -->
+            <button id="consult">Consulter Solde</button>
+            <!-- Bouton pour retirer de l'argent -->
+            <button id="withdraw">Retirer de l'argent</button>
+        </div>
+
+        <!-- Options de retrait, cachées par défaut -->
+        <div id="withdrawal-options" style="display: none;">
+            <!-- Bouton pour retirer 10.000 -->
+            <button class="withdraw-option" data-amount="10000">Retrait 10.000</button>
+            <!-- Bouton pour retirer 50.000 -->
+            <button class="withdraw-option" data-amount="50000">Retrait 50.000</button>
+            <!-- Bouton pour entrer un montant personnalisé -->
+            <button id="other-withdrawal">Autre Montant</button><br>
+            <!-- Champ pour entrer un montant personnalisé, caché par défaut -->
+            <input type="number" id="custom-amount" placeholder="Entrer le montant" style="display: none;">
+            <!-- Conteneur pour les boutons d'action de retrait personnalisé, caché par défaut -->
+            <div id="custom-buttons" style="display: none;">
+                <!-- Bouton pour envoyer la demande de retrait -->
+                <button id="submit-withdrawal">Envoyer</button>
+                <!-- Bouton pour annuler la demande de retrait -->
+                <button id="cancel-withdrawal">Annuler</button>
+            </div>
+        </div>
+
+        <!-- Zone pour afficher les messages d'erreur ou de confirmation -->
+          <!-- Conteneur pour les messages -->
+        <div id="message"></div>
+
+        <!-- Bouton de déconnexion -->
+        <button id="logout">Déconnexion</button>
+    </div>
+
+    <!-- Conteneur pour l'affichage du reçu après un retrait, caché par défaut -->
+    <div id="receipt" class="receipt" style="display: none;">
+        <h2>Reçu de Retrait</h2>
+        <!-- Contenu du reçu -->
+        <div id="receipt-content"></div>
+        <!-- Bouton pour fermer le reçu -->
+        <button id="close-receipt">Fermer</button>
+    </div>
+
+    <!-- Inclusion du fichier JavaScript pour gérer la logique de la page -->
+    <script src="gab.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const consultButton = document.getElementById('consult');
+        const withdrawButton = document.getElementById('withdraw');
+        const withdrawalOptionsDiv = document.getElementById('withdrawal-options');
+        const customAmountInput = document.getElementById('custom-amount');
+        const customButtonsDiv = document.getElementById('custom-buttons');
+        const otherWithdrawalButton = document.getElementById('other-withdrawal');
+        const cancelWithdrawalButton = document.getElementById('cancel-withdrawal');
+
+        // Affiche les options de retrait
+        withdrawButton.addEventListener('click', () => {
+            withdrawalOptionsDiv.style.display = 'block';
+            withdrawButton.style.display = 'none'; // Cache le bouton de retrait
+            // Réinitialiser l'état pour afficher le bouton "Autre Montant" si nécessaire
+            otherWithdrawalButton.style.display = 'inline'; // Réaffiche le bouton "Autre Montant"
+    });
+
+    // Affiche le champ pour entrer un montant personnalisé et les boutons d'action
+    otherWithdrawalButton.addEventListener('click', () => {
+        customAmountInput.style.display = 'block';
+        customButtonsDiv.style.display = 'block';
+        otherWithdrawalButton.style.display = 'none'; // Cache le bouton 'Autre Montant'
+    });
+
+    // Annule le retrait personnalisé et affiche les boutons de départ
+    cancelWithdrawalButton.addEventListener('click', () => {
+        customAmountInput.style.display = 'none'; // Cache le champ de montant personnalisé
+        customButtonsDiv.style.display = 'none'; // Cache les boutons d'action de retrait personnalisé
+        withdrawalOptionsDiv.style.display = 'none'; // Cache les options de retrait
+        withdrawButton.style.display = 'block'; // Affiche le bouton de retrait
+        consultButton.style.display = 'block'; // Affiche le bouton de consultation du solde
+        document.getElementById('logout').style.display = 'block'; // Affiche le bouton de déconnexion
+
+        // Assurez-vous que le bouton "Autre Montant" est réaffiché lorsque l'utilisateur annule
+        otherWithdrawalButton.style.display = 'inline';
+    });
+});
+
+
+
+// Fonction pour mettre à jour le message de la bande défilante avec le nom de l'utilisateur
+function updateMarqueeMessage() {
+        const marquee = document.querySelector('.marquee p');
+        if (currentUser) {
+            marquee.textContent = 'Bienvenue, ${currentUser.prenom} ${currentUser.nom}, dans la page de consultation et de retrait.';
+        } else {
+            marquee.textContent = 'Bienvenue dans la page de consultation et de retrait';
+        }
+    }
+
+    // Fonction pour charger l'utilisateur actuellement connecté
+    function loadCurrentUser() {
+        const userId = parseInt(localStorage.getItem('currentUserId'));
+        if (userId) {
+            currentUser = users.find(user => user.id === userId);
+        }
+        updateMarqueeMessage();
+    }
+
+    // Charge les utilisateurs et l'utilisateur actuellement connecté
+    loadUsers();
+    loadCurrentUser();
+    </script>
+</body>
+</html>

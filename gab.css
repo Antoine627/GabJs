@@ -1,0 +1,240 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+}
+#body
+{
+    background-image: url('image/gab.png'); /* Chemin vers votre image de fond */
+    background-size: cover; /* Pour couvrir toute la surface */
+    background-position: center; /* Centrer l'image */
+    background-repeat: no-repeat; /* Ne pas répéter l'image */
+    position: relative; /* Pour permettre le placement des éléments absolument positionnés */
+    height: 100vh; /* Hauteur de l'écran */
+}
+
+#sect2
+{
+    background-image: url('image/image2.png'); /* Chemin vers votre image de fond */
+    background-size: cover; /* Pour couvrir toute la surface */
+    background-position: center; /* Centrer l'image */
+    background-repeat: no-repeat; /* Ne pas répéter l'image */
+    position: relative; /* Pour permettre le placement des éléments absolument positionnés */
+    height: 100vh; /* Hauteur de l'écran */
+}
+/*
+#sect2::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: backgroundAnimation 10s infinite;
+    z-index: -1;
+}
+
+@keyframes backgroundAnimation {
+    0% { background-image: url('Atm_kiosk_UI.webp'); }
+    25% { background-image: url('Gab_express.webp'); }
+    50% { background-image: url('bnk.jpeg'); }
+    75% { background-image: url('Atm_kiosk_UI.webp'); }
+    100% { background-image: url('Gab_express.webp'); }
+}
+*/
+.header {
+    text-align: center;
+    margin: 0;
+}
+
+.header h1 {
+    font-size: 100px;
+    margin: 20px 0;
+    color: #fff;
+}
+
+.marquee {
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+.marquee p {
+    display: inline-block;
+    animation: marquee 10s linear infinite;
+    font-size: 20px;
+    margin: 0;
+}
+
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.container {
+    position: relative;
+    left: 300px;
+    bottom: 90px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+    width: 450px; /* Largeur augmentée pour consultation_retrait.html */
+    height: 300px;
+    text-align: center;
+}
+.container2 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+    width: 650px; /* Largeur augmentée pour consultation_retrait.html */
+    height: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(41, 48, 105);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Transition pour zoom et couleur */
+}
+
+button:hover {
+    background-color: rgb(186, 219, 243);
+    transform: scale(1.1);
+    color: #0056b3;
+}
+
+#message {
+    margin-top: 20px;
+    color: #0056b3;
+    font-size: 25px;
+}
+
+.button-container {
+    margin: 20px 0;
+}
+
+.button-container button {
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+}
+
+#withdrawal-options {
+    display: none;
+    text-align: center;
+}
+
+#withdrawal-options input {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+#withdrawal-options input:hover {
+   
+    background-color: #fff;
+}
+
+#withdrawal-options button {
+    width: auto;
+    padding: 10px;  
+}
+
+#logout {
+    position: relative;
+    margin-top: 20px;
+   
+    background-color: #ff0000;
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+}
+
+#logout:hover {
+    background-color: #cc0000;
+    color: #fff;
+}
+/* Styles existants */
+
+#custom-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espace entre les boutons */
+}
+
+#custom-buttons button {
+    flex: 1; /* Faire en sorte que les boutons prennent une largeur égale */
+}
+
+.receipt {
+    position :absolute;
+    top: 10%;
+    right: 0;
+    width: 300px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+input #custom-amount
+{
+    color: #fff;
+}
+.receipt h2 {
+    text-align: center;
+}
+
+.receipt button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.receipt button:hover {
+    background-color: #0056b3;
+}
+
